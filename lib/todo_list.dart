@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_slidable/flutter_slidable.dart';
 
 class ToDoList extends StatefulWidget {
   @override
@@ -9,7 +10,16 @@ class _ToDoListState extends State<ToDoList> {
   final List<String> _toDoList = ['Code', 'Compile', 'Test'];
 
   TextEditingController _tecInsertTask = new TextEditingController();
+  late final SlidableController slidableController;
   String insertTaskValue;
+
+  void initState(){
+    slidableController = SlidableController(
+      onSlideAnimationChanged: handleSlideAnimationChanged,
+      onSlideIsOpenChanged: handleSlideIsOpenChanged);
+      super.initState();
+    )
+  }
 
   @override
   Widget build(BuildContext context) {
